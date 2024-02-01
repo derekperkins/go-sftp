@@ -228,6 +228,7 @@ func sftpConnect(logger log.Logger, cfg ClientConfig) (*ssh.Client, io.WriteClos
 	// [aes128-cbc aes192-cbc aes256-cbc blowfish-cbc]
 	// conf.HostKeyAlgorithms = append(conf.HostKeyAlgorithms, ssh.KeyAlgoRSA, ssh.KeyAlgoRSASHA512, ssh.KeyAlgoDSA, ssh.KeyAlgoRSASHA256, "aes128-cbc", "aes192-cbc", "aes256-cbc", "blowfish-cbc")
 	conf.Ciphers = append(conf.Ciphers, "aes128-cbc")
+	conf.MACs = []string{"hmac-sha2-256", "hmac-sha2-512", "hmac-sha1", "hmac-sha1-96"}
 	fmt.Println("ciphers:", conf.Ciphers)
 
 	// Connect to the remote server
